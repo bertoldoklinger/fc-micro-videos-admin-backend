@@ -29,7 +29,13 @@
   - Outras verificações
   - Eventos
 - Eric Evans fala: "O projeto é o código e o código é o projeto" (Devemos sempre usar linguagem expressiva e ubíqua)
-- Nas entidades é interessante ter o método toJSON() que retorna os atributos como um objeto javascript, para testes e serializar depois
+- Nas **Entities** é interessante ter o método toJSON() que retorna os atributos como um objeto javascript, para testes e serializar depois
+- Em **Entities**, eu quero ter uma identidade para diferenciar um de outra, todos os campos podem mudar ao longo do tempo, só a identidade que não(id normalmente)
+- **Value Objects** são informações que não tem uma identidade única, apenas **valores** únicos
+- **Value Objects** são objetos que vão armazenar valores específicos fazendo suas validações necessárias
+- **Value Objects** diferente de Entities, são **livres de efeitos colaterais(modificação de propriedades) e imutáveis**, após criar-lo, não podemos modifica-lo
+- Gerar mais Value Objects acaba gerando mais qualidade para aplicação, porque você abstrai regras daquele valor, tirando das Entities e tornando ela reusável entre entidades.
+
 ### Testes
 - Quando testamos uma entidade, normalmente testamos o construtor dela, instanciando a classe e fazendo asserções nos seus atributos
 - Devemos também testar todos os comportamentos(métodos) dela, todo "setter" deve ser testado
