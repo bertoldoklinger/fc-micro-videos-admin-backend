@@ -30,3 +30,6 @@
   - Eventos
 - Eric Evans fala: "O projeto é o código e o código é o projeto" (Devemos sempre usar linguagem expressiva e ubíqua)
 - Nas entidades é interessante ter o método toJSON() que retorna os atributos como um objeto javascript, para testes e serializar depois
+### Testes
+- Quando testamos uma entidade, normalmente testamos o construtor dela, instanciando a classe e fazendo asserções nos seus atributos
+- Devemos também testar todos os comportamentos(métodos) dela, todo "setter" deve ser testado
