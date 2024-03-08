@@ -16,3 +16,17 @@
 - pacotes importantes => jest @types/jest ts-node typescript @swc/jest @swc/core @swc/cli (Todas dependencias de desenvolvimento)
 ## Capitulo 02 - Entidade Categoria
 - Uma entidade é algo que queremos manipular, que seja único através de uma identificação, ela vais e diferencia de outras entidades por essa identificação
+- Podemos ter 2 approachs para criação de entidades
+  - O "purista" - entidades - menos possível de libs e frameworks
+  - O mix - entidades misturadas com ORM (dominio ríco com expressividade e comportamento)
+- Não criamos uma entity com o new porque quando recuperamos ela de um banco de dados, ele recarrega a entity, rodando o constructor, por isso sempre utilizamos em entidades o método static create, para realmente criar o objeto da Entidade puro, (diferença de construção e criação)
+- O método static create é uma factory method, ele vai fabricar a entidade
+- Quando queremos fazer o set, alterar atributos da entidade, devemos fazer com expressividade, não spammar varios setters sem sentido
+- Quando queremos definir essas operações(alterações de atributos), é importante que a gente converse com o **domain expert**, frases que vão ter verbos, vão tender a virar operações que vamos criar com os atributos, que tenhamos um entendimento melhor do que será feito no domínio
+- A diferença entre um método expressivo de operação e um setter é que um setter é anêmico, ele representa uma mudança de valor, o método expressivo = exemplo *changeName()* está representando uma operação que você vai:
+  - Alterar o nome
+  - Fazer a validação dos dados
+  - Outras verificações
+  - Eventos
+- Eric Evans fala: "O projeto é o código e o código é o projeto" (Devemos sempre usar linguagem expressiva e ubíqua)
+- Nas entidades é interessante ter o método toJSON() que retorna os atributos como um objeto javascript, para testes e serializar depois
