@@ -35,6 +35,9 @@
 - **Value Objects** são objetos que vão armazenar valores específicos fazendo suas validações necessárias
 - **Value Objects** diferente de Entities, são **livres de efeitos colaterais(modificação de propriedades) e imutáveis**, após criar-lo, não podemos modifica-lo
 - Gerar mais Value Objects acaba gerando mais qualidade para aplicação, porque você abstrai regras daquele valor, tirando das Entities e tornando ela reusável entre entidades.
+- Quando verificamos um **Value Object genérico** usando o método equals em uma classe, verificamos:
+  - Se ele possui um valor truthy
+  - Se o seu construtor é igual ao construtor do outro Value Object
 
 ### Testes
 - Quando testamos uma entidade, normalmente testamos o construtor dela, instanciando a classe e fazendo asserções nos seus atributos
