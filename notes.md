@@ -38,7 +38,11 @@
 - Quando verificamos um **Value Object genérico** usando o método equals em uma classe, verificamos:
   - Se ele possui um valor truthy
   - Se o seu construtor é igual ao construtor do outro Value Object
-- 
+- Algo que temos com uma **modelagem rica**, é garantir que a entidade esteja em um estado **válido**
+  - Temos a abordagem do **notification pattern**, onde temos um container onde todos os erros de domínio vão para esse container de notification, e validamos vendo se existe esse erro lá(Bem usado no DDD)
+  - Temos também a classe ValidatorRules que funciona como o zod => .required().string().maxLength(255), dessa forma não precisamos validar toda vez que operacionalizamos a entidade
+  - Podemos também ter um método chamado isValid, onde validamos aquele 'comando'(mas tem o tradeoff de termos que validar toda vez que operacionamos essa entidade para não operacionalizarmos com um estado inválido)
+  - Podemos utilizar uma classe de validação separada (*"A entidade não tem que validar, ela tem que conseguir se validar"*) => Melhor jeito
 
 ### Testes
 - Quando testamos uma entidade, normalmente testamos o construtor dela, instanciando a classe e fazendo asserções nos seus atributos
