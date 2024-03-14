@@ -43,6 +43,8 @@
   - Temos também a classe ValidatorRules que funciona como o zod => .required().string().maxLength(255), dessa forma não precisamos validar toda vez que operacionalizamos a entidade
   - Podemos também ter um método chamado isValid, onde validamos aquele 'comando'(mas tem o tradeoff de termos que validar toda vez que operacionamos essa entidade para não operacionalizarmos com um estado inválido)
   - Podemos utilizar uma classe de validação separada (*"A entidade não tem que validar, ela tem que conseguir se validar"*) => Melhor jeito
+  - Temos sempre que aplicar validação em mudanças de comportamento da entidade da entidade
+    - Ex: changeName(name:string) => dentro dela depois da mutação do valor, deve-se ter um Category.validate(this)
 
 ### Testes
 - Quando testamos uma entidade, normalmente testamos o construtor dela, instanciando a classe e fazendo asserções nos seus atributos

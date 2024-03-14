@@ -1,5 +1,6 @@
 import { Uuid } from "../../../shared/domain/value-objects/uuid.vo"
 import { Category } from "../category.entity"
+import { EntityValidationError } from "../validators/validation.error"
 
 describe('Category Unit Tests', () => {
   let validateSpy: any
@@ -159,3 +160,20 @@ describe('Category Unit Tests', () => {
     expect(category.is_active).toBe(false)
   });
 })
+
+describe('Category Validator', () => {
+  describe('create command', () => {
+    test('should ', () => {
+      expect(() => {
+        Category.create({
+          name: null
+        })
+      }).toThrow(
+        new EntityValidationError({
+          name: ["name is required"]
+        })
+      )
+    })
+  });
+});
+
