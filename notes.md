@@ -38,6 +38,7 @@
 - Quando verificamos um **Value Object genérico** usando o método equals em uma classe, verificamos:
   - Se ele possui um valor truthy
   - Se o seu construtor é igual ao construtor do outro Value Object
+- 
 
 ### Testes
 - Quando testamos uma entidade, normalmente testamos o construtor dela, instanciando a classe e fazendo asserções nos seus atributos
