@@ -45,6 +45,13 @@
   - Podemos utilizar uma classe de validação separada (*"A entidade não tem que validar, ela tem que conseguir se validar"*) => Melhor jeito
   - Temos sempre que aplicar validação em mudanças de comportamento da entidade da entidade
     - Ex: changeName(name:string) => dentro dela depois da mutação do valor, deve-se ter um Category.validate(this)
+  - Criamos uma classe Entity abstrata para extendermos todas as props que são comuns em todas as entidades como o **ID**, assim limpando nosso código e respeitando o **DRY**
+## Capitulo 03 - Repositório Categoria
+  - Repositório é uma camada que vai lidar com uma entidade que tem dados e comportamento, persistindo elas, seja em memória ou em bancos de dados, são criados a partir de agregados(em DDD)
+  - Temos sempre um repositório para cada agregado
+  - Diferente de **DAO(Data Access Object)**, que persistem dados,ou parte de dados, **Repositories** persistem ou alteram a **entidade completa** 
+  - Vaugh Vernon fala em Implementando DDD que *"Eventualmente precisamos passar como params coisas que não sejam a Entidade, podemos trabalhar com Value Objects(que são auto-validados)"*
+  - Repositórios só se preocupam com **armazenamento**, qualquer regra de negócio fica dentro da entidade
 
 ### Testes
 - Quando testamos uma entidade, normalmente testamos o construtor dela, instanciando a classe e fazendo asserções nos seus atributos
