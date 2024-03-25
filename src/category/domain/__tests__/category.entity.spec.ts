@@ -182,7 +182,7 @@ describe('Category Validator', () => {
           "name must be shorter than or equal to 255 characters",
         ],
       });
-      
+
       expect(
         () => new Category({ name: "t".repeat(256) })
       ).containsErrorMessages({
