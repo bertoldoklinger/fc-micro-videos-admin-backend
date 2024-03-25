@@ -1,6 +1,6 @@
 import { Uuid } from "../../../shared/domain/value-objects/uuid.vo"
 import { Category } from "../category.entity"
-import { EntityValidationError } from "../validators/validation.error"
+
 
 describe('Category Unit Tests', () => {
   let validateSpy: any
@@ -162,18 +162,48 @@ describe('Category Unit Tests', () => {
 })
 
 describe('Category Validator', () => {
-  describe('create command', () => {
-    test('should ', () => {
-      expect(() => {
-        Category.create({
-          name: null
-        })
-      }).toThrow(
-        new EntityValidationError({
-          name: ["name is required"]
-        })
-      )
-    })
-  });
-});
+   describe("create method", () => {
+    it("should a invalid category using name property", () => {
+      expect(() => new Category({ name: null })).containsErrorMessages({
+        name: [
+          "name should not be empty",
+          "name must be a string",
+          "name must be shorter than or equal to 255 characters",
+        ],
+      });
 
+      expect(() => new Category({ name: "" })).containsErrorMessages({
+        name: ["name should not be empty"],
+      });
+
+      expect(() => new Category({ name: 5 as any })).containsErrorMessages({
+        name: [
+          "name must be a string",
+          "name must be shorter than or equal to 255 characters",
+        ],
+      });
+      
+      expect(
+        () => new Category({ name: "t".repeat(256) })
+      ).containsErrorMessages({
+        name: ["name must be shorter than or equal to 255 characters"],
+      });
+    });
+
+    it("should a invalid category using description property", () => {
+      expect(
+        () => new Category({ description: 5 } as any)
+      ).containsErrorMessages({
+        description: ["description must be a string"],
+      });
+    });
+
+    it("should a invalid category using is_active property", () => {
+      expect(() => new Category({ is_active: 5 } as any)).containsErrorMessages(
+        {
+          is_active: ["is_active must be a boolean value"],
+        }
+      );
+    });
+  })
+})
