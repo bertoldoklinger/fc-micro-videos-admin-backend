@@ -1,5 +1,5 @@
+import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 import { ValueObject } from "../value-object";
-import { v4 as uuidv4, validate as uuidValidate } from 'uuid'
 
 export class Uuid extends ValueObject{
   readonly id: string
@@ -14,6 +14,10 @@ export class Uuid extends ValueObject{
     if(!isValid) {
       throw new InvalidUuidError()
     }
+  }
+
+  toString() {
+    return this.id
   }
 }
 
