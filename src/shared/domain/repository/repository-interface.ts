@@ -1,5 +1,7 @@
 import { Entity } from "../entity"
 import { ValueObject } from "../value-object"
+import { SearchParams } from "./search-params"
+import { SearchResult } from "./search-result"
 
 
 
@@ -17,4 +19,12 @@ export interface IRepositoryInterface<E extends Entity, EntityId extends ValueOb
   findAll(): Promise<E[]>
 
   getEntity(): new (...args: any[]) => E
+}
+
+export interface ISearchableRepository<E extends Entity, EntityId extends ValueObject, SearchInput = SearchParams, SearchOutput = SearchResult> extends IRepositoryInterface<Entity, ValueObject> {
+  /*
+  * Quais campos estão habilitados para que eu possa fazer a busca.
+  */
+  sortableFields: string[]
+  search(props: SearchInput): Promise<SearchOutput>
 }
