@@ -21,7 +21,7 @@ export interface IRepositoryInterface<E extends Entity, EntityId extends ValueOb
   getEntity(): new (...args: any[]) => E
 }
 
-export interface ISearchableRepository<E extends Entity, EntityId extends ValueObject, SearchInput = SearchParams, SearchOutput = SearchResult> extends IRepositoryInterface<Entity, ValueObject> {
+export interface ISearchableRepository<E extends Entity, EntityId extends ValueObject,Filter = string, SearchInput = SearchParams<Filter>, SearchOutput = SearchResult> extends IRepositoryInterface<E, EntityId> {
   /*
   * Quais campos estão habilitados para que eu possa fazer a busca.
   */
